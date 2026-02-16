@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "Free Online Tools – Image Compressor, Case Converter, Percentage Calculator & More",
-    template: "%s | Revenue Tools",
+    template: "%s | Nano Apps",
   },
   description:
     "Free online tools: compress images, convert text case, calculate percentages, create WhatsApp links, convert JSON to CSV. No sign-up. Fast and private.",
@@ -27,12 +27,12 @@ export const metadata: Metadata = {
     "WhatsApp link generator",
     "JSON to CSV",
   ],
-  authors: [{ name: "Revenue Tools" }],
-  creator: "Revenue Tools",
+  authors: [{ name: "Nano Apps" }],
+  creator: "Nano Apps",
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Revenue Tools",
+    siteName: "Nano Apps",
   },
   twitter: {
     card: "summary_large_image",
@@ -59,7 +59,7 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Revenue Tools",
+    name: "Nano Apps",
     description: "Free online tools: image compressor, text case converter, percentage calculator, WhatsApp link generator, JSON to CSV.",
     url: siteUrl,
     potentialAction: {
