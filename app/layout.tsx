@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { AdSenseScript } from "@/components/adsense-script";
+import { GoogleAnalyticsScript } from "@/components/google-analytics";
+import { GoogleAnalyticsTracker } from "@/components/google-analytics-tracker";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -75,8 +77,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <AdSenseScript />
+        <GoogleAnalyticsScript />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <GoogleAnalyticsTracker />
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-background focus:z-50">
           Skip to content
         </a>
