@@ -31,6 +31,12 @@ export const TOOLS: ToolConfig[] = [
     description: "Convert JSON data to CSV format for spreadsheets and data export.",
     href: "/tools/json-to-csv",
   },
+  {
+    slug: "bmi-calculator",
+    name: "BMI Calculator",
+    description: "Check your body mass index (BMI) with metric or imperial units. Free online BMI calculator.",
+    href: "/tools/bmi-calculator",
+  },
 ];
 
 export function getRelatedTools(currentSlug: string, limit = 3): ToolConfig[] {
