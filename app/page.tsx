@@ -22,7 +22,7 @@ export default function HomePage() {
       <header className="border-b border-border bg-card">
         <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6">
           <h1 className="text-2xl font-bold text-foreground tracking-tight">
-            Revenue Tools
+            Apps
           </h1>
           <p className="mt-1 text-muted-foreground text-sm">
             Free online tools. No sign-up. Works in your browser.
@@ -63,7 +63,7 @@ export default function HomePage() {
         <section className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground">
           <h2 className="text-xl font-semibold text-foreground">Free Online Tools for Everyone</h2>
           <p>
-            Revenue Tools offers a set of free, fast online tools that run in your browser. No account is required,
+            Apps offers a set of free, fast online tools that run in your browser. No account is required,
             and your data stays on your device. Use our <Link href="/tools/image-compressor" className="text-primary underline">image compressor</Link> to
             reduce file size for web or email. Our <Link href="/tools/text-case-converter" className="text-primary underline">text case converter</Link> lets you
             switch between uppercase, lowercase, title case, and sentence case in one click. Need to work out a
