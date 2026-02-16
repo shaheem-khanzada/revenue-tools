@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://revenue-tools.vercel.app";
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://nanoapps.shop").replace(/\/$/, "");
 
 export default function robots(): MetadataRoute.Robots {
   return {
