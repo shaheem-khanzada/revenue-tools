@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { TOOLS } from "@/lib/tools-config";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AdHomepage } from "@/components/ad-placements";
 
 export const metadata = {
   title: "Free Online Tools – Image Compressor, Case Converter, Percentage Calculator & More",
@@ -56,6 +57,8 @@ export default function HomePage() {
             ))}
           </ul>
         </section>
+
+        <AdHomepage />
 
         <section className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground">
           <h2 className="text-xl font-semibold text-foreground">Free Online Tools for Everyone</h2>
