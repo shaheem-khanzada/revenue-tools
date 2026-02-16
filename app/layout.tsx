@@ -3,7 +3,16 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { AdSenseScript } from "@/components/adsense-script";
 import { GoogleAnalyticsScript } from "@/components/google-analytics";
 import { GoogleAnalyticsTracker } from "@/components/google-analytics-tracker";
+import { TOOLS } from "@/lib/tools-config";
 import "./globals.css";
+
+const siteKeywords = ["free online tools", ...TOOLS.map((t) => t.name.toLowerCase())];
+const toolsListForMeta = TOOLS.map((t) => t.name.toLowerCase()).join(", ");
+const defaultTitle =
+  TOOLS.length > 3
+    ? `Free Online Tools – ${TOOLS.slice(0, 3).map((t) => t.name).join(", ")} & More`
+    : `Free Online Tools – ${TOOLS.map((t) => t.name).join(", ")}`;
+const defaultDescription = `Free online tools: ${toolsListForMeta}. No sign-up. Fast and private.`;
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -14,19 +23,11 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://nanoapps.shop").re
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Free Online Tools – Image Compressor, Case Converter, Percentage Calculator & More",
+    default: defaultTitle,
     template: "%s | Nano Apps",
   },
-  description:
-    "Free online tools: compress images, convert text case, calculate percentages, create WhatsApp links, convert JSON to CSV. No sign-up. Fast and private.",
-  keywords: [
-    "free online tools",
-    "image compressor",
-    "text case converter",
-    "percentage calculator",
-    "WhatsApp link generator",
-    "JSON to CSV",
-  ],
+  description: defaultDescription,
+  keywords: siteKeywords,
   authors: [{ name: "Nano Apps" }],
   creator: "Nano Apps",
   openGraph: {
@@ -60,7 +61,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Nano Apps",
-    description: "Free online tools: image compressor, text case converter, percentage calculator, WhatsApp link generator, JSON to CSV.",
+    description: `Free online tools: ${toolsListForMeta}.`,
     url: siteUrl,
     potentialAction: {
       "@type": "SearchAction",

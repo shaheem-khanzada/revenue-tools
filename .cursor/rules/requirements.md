@@ -87,6 +87,12 @@ Each tool page must contain:
 * At least 3 FAQs
 * Internal links to other tools
 
+### Site-wide metadata and keywords
+
+* Layout metadata (keywords, default description, JSON-LD) is **derived from `TOOLS`** in `/lib/tools-config.ts`.
+* **Do not** manually edit the keywords array or tool list in `app/layout.tsx`. Adding a new tool to `TOOLS` automatically updates layout keywords and the site description.
+* When you add a new tool, add it **only** to `TOOLS` in `lib/tools-config.ts`; layout stays in sync.
+
 ---
 
 ## Performance Rules
@@ -228,6 +234,7 @@ When generating code:
 * Write clean, readable code
 * Include SEO metadata
 * Follow project structure exactly
+* When adding a new tool: add it to `TOOLS` in `lib/tools-config.ts` only—do not manually update keywords or tool lists in `app/layout.tsx` (they are auto-derived from `TOOLS`).
 
 If unsure:
 Choose the simplest working solution.
