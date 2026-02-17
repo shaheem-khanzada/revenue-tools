@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -11,15 +11,10 @@ declare global {
 }
 
 interface AdSlotProps {
-  /** AdSense slot ID (e.g. "1234567890") */
   slotId: string;
-  /** AdSense client ID (e.g. "ca-pub-XXXXXXXXXXXXXXXX") */
   clientId: string;
-  /** Layout: "in-article" | "in-feed" | "auto" (responsive) */
   format?: "auto" | "rectangle" | "horizontal" | "vertical";
-  /** Optional className for the wrapper */
   className?: string;
-  /** Optional label for accessibility */
   label?: string;
 }
 
@@ -31,34 +26,53 @@ export function AdSlot({
   label = "Advertisement",
 }: AdSlotProps) {
   const pathname = usePathname();
-  const insRef = useRef<HTMLModElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [pushed, setPushed] = useState(false);
 
   useEffect(() => {
-    if (!clientId || !slotId || typeof window === "undefined") return;
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.warn("AdSense push failed", e);
-    }
-  }, [clientId, slotId, pathname]);
+    setPushed(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!clientId || !slotId || typeof window === "undefined" || !containerRef.current) return;
+
+    const el = containerRef.current;
+
+    const tryPush = () => {
+      if (el.offsetWidth === 0 || pushed) return;
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        setPushed(true);
+      } catch (e) {
+        console.warn("AdSense push failed", e);
+      }
+    };
+
+    tryPush();
+    const ro = new ResizeObserver(() => tryPush());
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [clientId, slotId, pathname, pushed]);
 
   if (!clientId || !slotId) return null;
 
   return (
     <div
-      className={cn("min-h-[90px] flex items-center justify-center bg-muted/30 rounded-lg", className)}
+      ref={containerRef}
+      className={cn(
+        "min-h-[90px] min-w-[200px] w-full flex items-center justify-center bg-muted/30 rounded-lg",
+        className
+      )}
       role="complementary"
       aria-label={label}
     >
       <ins
-        ref={insRef}
         className="adsbygoogle block"
-        data-adtest="on"
         data-ad-client={clientId}
         data-ad-slot={slotId}
         data-ad-format={format}
         data-full-width-responsive={format === "auto" ? "true" : undefined}
-        style={{ display: "block" }}
+        style={{ display: "block", minHeight: "90px" }}
       />
     </div>
   );
