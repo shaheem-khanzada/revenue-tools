@@ -4,6 +4,8 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { GoogleAnalyticsScript } from "@/components/google-analytics";
 import { GoogleAnalyticsTracker } from "@/components/google-analytics-tracker";
 import { TOOLS } from "@/lib/tools-config";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
 const siteKeywords = ["free online tools", ...TOOLS.map((t) => t.name.toLowerCase())];
@@ -85,7 +87,9 @@ export default function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-background focus:z-50">
           Skip to content
         </a>
+        <Header />
         <main id="main-content">{children}</main>
+        <Footer />
       </body>
     </html>
   );

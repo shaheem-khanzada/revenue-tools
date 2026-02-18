@@ -45,8 +45,8 @@ export function AdSidebar() {
 export function AdHomepage() {
   if (!clientId || !slotHomepage) return null;
   return (
-    <div className="my-8">
-      <AdSlot slotId={slotHomepage} clientId={clientId} format="auto" label="Advertisement" />
+    <div className="my-4">
+      <AdSlot slotId={slotHomepage} clientId={clientId} format="auto" label="Advertisement" className="min-h-[50px]" />
     </div>
   );
 }
