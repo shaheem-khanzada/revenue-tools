@@ -2,7 +2,7 @@ import type { ToolConfig } from "@/lib/types";
 import type { FAQItem } from "@/lib/types";
 import { FAQSection } from "@/components/faq-section";
 import { RelatedTools } from "@/components/related-tools";
-import { AdBelowResult, AdBetweenSections, AdSidebar } from "@/components/ad-placements";
+import { AdBelowResult, AdBetweenSections } from "@/components/ad-placements";
 import { cn } from "@/lib/utils";
 
 interface ToolLayoutProps {
@@ -51,8 +51,6 @@ export function ToolLayout({ tool, children, howItWorks, faqItems, className }: 
 
         <RelatedTools currentSlug={tool.slug} />
       </article>
-
-      <AdSidebar />
     </div>
   );
 }
